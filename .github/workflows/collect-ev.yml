@@ -1,12 +1,16 @@
+# .github/workflows/collect-ev.yml 의 내용을 이것으로 통째로 바꿉니다.
+# 한 번 실행되면 약 5시간 30분 동안 10분마다 수집하고, 끝날 때 스스로 다음 실행을 시작합니다.
+# 예약 실행(schedule)은 사슬이 끊겼을 때 다시 시작하기 위한 예비용입니다.
 name: collect-ev-status
 
 on:
   schedule:
-  - cron: "4,14,24,34,44,54 * * * *"
+    - cron: "17 */2 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: collect-ev
@@ -15,27 +19,37 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 350
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
-      - name: Collect
+      - name: Collect every 10 minutes
         env:
           EV_API_KEY: ${{ secrets.EV_API_KEY }}
-        run: python collect.py daegu gumi
-
-      - name: Commit
-        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add data logs
-          git commit -m "collect $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
-          for i in 1 2 3; do
-            git pull --rebase && git push && break
-            sleep 5
+          end=$(( $(date +%s) + 330 * 60 ))
+          while [ "$(date +%s)" -lt "$end" ]; do
+            start=$(date +%s)
+            python collect.py daegu gumi || true
+            git add data logs
+            if git commit -q -m "collect $(date -u +%Y-%m-%dT%H:%MZ)"; then
+              for i in 1 2 3; do
+                git pull -q --rebase && git push -q && break
+                sleep 5
+              done
+            fi
+            elapsed=$(( $(date +%s) - start ))
+            if [ "$elapsed" -lt 600 ]; then sleep $(( 600 - elapsed )); fi
           done
+
+      - name: Start next run
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run collect-ev.yml --ref "${{ github.ref_name }}"
