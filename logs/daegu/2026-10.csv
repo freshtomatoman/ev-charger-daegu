@@ -189,3 +189,4 @@ run_started_kst,run_finished_kst,region,zcode,pages,total_count,rows_saved,statu
 2026-10-29T06:00:01+09:00,2026-10-29T06:03:00+09:00,daegu,27,2,25414,0,fail,page 3 실패: The read operation timed out
 2026-10-29T06:10:01+09:00,2026-10-29T06:12:04+09:00,daegu,27,0,0,0,fail,page 1 실패: HTTP Error 504: Gateway Timeout
 2026-10-29T06:20:01+09:00,2026-10-29T06:21:18+09:00,daegu,27,3,25414,1728,ok,
+2026-10-29T06:30:01+09:00,2026-10-29T06:32:26+09:00,daegu,27,3,25414,1728,ok,
