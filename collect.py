@@ -34,8 +34,19 @@ REGIONS = {
     "gumi": {"zcode": "47", "addr": "구미시"},
 }
 
+# 매 회차 상태 파일에는 급속 충전기(출력 50kW 이상)만 저장 (저장소 용량 절약).
+# 정적 파일(하루 1번)에는 전체 충전기를 저장합니다. 전체를 저장하려면 0으로 바꾸세요.
+MIN_STATUS_KW = 50
+
 # 매 회차 저장하는 상태 열 (예측에 필요한 시간·상태 정보)
 STATUS_COLS = ["statId", "chgerId", "stat", "statUpdDt", "lastTsdt", "lastTedt", "nowTsdt"]
+
+
+def to_kw(v):
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return 0.0
 
 
 def now_kst():
@@ -125,13 +136,14 @@ def collect(region, key):
         if not rows:
             raise RuntimeError("저장할 행이 없음")
         day, hhmm = started.strftime("%Y-%m-%d"), started.strftime("%H%M")
-        write_csv_gz(f"data/{region}/status/{day}/{hhmm}.csv.gz", rows,
+        status_rows = [r for r in rows if to_kw(r.get("output")) >= MIN_STATUS_KW]
+        write_csv_gz(f"data/{region}/status/{day}/{hhmm}.csv.gz", status_rows,
                      STATUS_COLS + ["collected_at_kst", "source_page_no"])
         static_path = f"data/{region}/static/{day}.csv.gz"
         if not os.path.exists(static_path):        # 정적 정보는 하루 1번만
             cols = sorted({k for r in rows for k in r})
             write_csv_gz(static_path, rows, cols)
-        rec["rows_saved"] = len(rows)
+        rec["rows_saved"] = len(status_rows)
     except Exception as e:
         rec["status"], rec["error"] = "fail", str(e)[:300]
     rec["run_finished_kst"] = now_kst().isoformat(timespec="seconds")
