@@ -378,3 +378,4 @@ run_started_kst,run_finished_kst,region,zcode,pages,total_count,rows_saved,statu
 2026-11-03T14:44:54+09:00,2026-11-03T14:46:57+09:00,daegu,27,0,0,0,fail,page 1 실패: HTTP Error 504: Gateway Timeout
 2026-11-03T14:54:54+09:00,2026-11-03T14:55:31+09:00,daegu,27,3,25625,1738,ok,
 2026-11-03T15:04:54+09:00,2026-11-03T15:06:04+09:00,daegu,27,3,25625,1738,ok,
+2026-11-03T15:14:54+09:00,2026-11-03T15:15:31+09:00,daegu,27,3,25625,1738,ok,
