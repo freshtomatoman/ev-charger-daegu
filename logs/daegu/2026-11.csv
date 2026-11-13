@@ -1846,3 +1846,4 @@ run_started_kst,run_finished_kst,region,zcode,pages,total_count,rows_saved,statu
 2026-11-13T22:06:17+09:00,2026-11-13T22:07:54+09:00,daegu,27,3,25571,1737,ok,
 2026-11-13T22:16:17+09:00,2026-11-13T22:17:30+09:00,daegu,27,3,25571,1737,ok,
 2026-11-13T22:26:17+09:00,2026-11-13T22:28:05+09:00,daegu,27,3,25571,1737,ok,
+2026-11-13T22:36:17+09:00,2026-11-13T22:40:20+09:00,daegu,27,1,25545,0,fail,page 2 실패: The read operation timed out
