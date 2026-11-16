@@ -2208,3 +2208,4 @@ run_started_kst,run_finished_kst,region,zcode,pages,total_count,rows_saved,statu
 2026-11-16T10:29:48+09:00,2026-11-16T10:30:20+09:00,gumi,47,3,23409,457,ok,
 2026-11-16T10:40:04+09:00,2026-11-16T10:44:09+09:00,gumi,47,2,23409,0,fail,page 3 실패: HTTP Error 503: Service Unavailable
 2026-11-16T10:49:17+09:00,2026-11-16T10:49:47+09:00,gumi,47,3,23409,457,ok,
+2026-11-16T10:59:27+09:00,2026-11-16T11:01:50+09:00,gumi,47,3,23409,457,ok,
