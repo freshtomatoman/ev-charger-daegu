@@ -2429,3 +2429,4 @@ run_started_kst,run_finished_kst,region,zcode,pages,total_count,rows_saved,statu
 2026-11-17T23:23:39+09:00,2026-11-17T23:27:09+09:00,gumi,47,0,0,0,fail,page 1 실패: <urlopen error timed out>
 2026-11-17T23:33:39+09:00,2026-11-17T23:37:10+09:00,gumi,47,0,0,0,fail,page 1 실패: <urlopen error timed out>
 2026-11-17T23:43:39+09:00,2026-11-17T23:47:10+09:00,gumi,47,0,0,0,fail,page 1 실패: <urlopen error timed out>
+2026-11-17T23:53:39+09:00,2026-11-17T23:57:10+09:00,gumi,47,0,0,0,fail,page 1 실패: <urlopen error timed out>
