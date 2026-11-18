@@ -2570,3 +2570,4 @@ run_started_kst,run_finished_kst,region,zcode,pages,total_count,rows_saved,statu
 2026-11-18T22:51:51+09:00,2026-11-18T22:52:14+09:00,gumi,47,3,23483,457,ok,
 2026-11-18T23:04:49+09:00,2026-11-18T23:06:17+09:00,gumi,47,3,23483,457,ok,
 2026-11-18T23:12:29+09:00,2026-11-18T23:14:56+09:00,gumi,47,2,23483,0,fail,page 3 실패: HTTP Error 429: Too Many Requests
+2026-11-18T23:21:55+09:00,2026-11-18T23:22:27+09:00,gumi,47,0,0,0,fail,page 1 실패: HTTP Error 429: Too Many Requests
