@@ -2789,3 +2789,4 @@ run_started_kst,run_finished_kst,region,zcode,pages,total_count,rows_saved,statu
 2026-11-20T11:23:20+09:00,2026-11-20T11:26:30+09:00,gumi,47,0,0,0,fail,page 1 실패: The read operation timed out
 2026-11-20T11:33:19+09:00,2026-11-20T11:33:47+09:00,gumi,47,3,23482,457,ok,
 2026-11-20T11:44:32+09:00,2026-11-20T11:45:00+09:00,gumi,47,3,23482,457,ok,
+2026-11-20T11:53:56+09:00,2026-11-20T11:54:59+09:00,gumi,47,3,23482,457,ok,
