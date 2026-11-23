@@ -3293,3 +3293,4 @@ run_started_kst,run_finished_kst,region,zcode,pages,total_count,rows_saved,statu
 2026-11-23T23:26:29+09:00,2026-11-23T23:27:04+09:00,daegu,27,3,25555,1740,ok,
 2026-11-23T23:36:29+09:00,2026-11-23T23:37:42+09:00,daegu,27,3,25555,1740,ok,
 2026-11-23T23:46:29+09:00,2026-11-23T23:48:22+09:00,daegu,27,3,25555,1740,ok,
+2026-11-23T23:56:44+09:00,2026-11-23T23:57:17+09:00,daegu,27,0,0,0,fail,page 1 실패: HTTP Error 429: Too Many Requests
